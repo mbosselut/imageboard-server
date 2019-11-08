@@ -7,11 +7,13 @@ const imageRouter = require('./image/router');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const corsMiddleware = cors();
+const authRouter = require('./auth/router');
 app.use(corsMiddleware);
 
 const parserMiddleware = bodyParser.json();
 app.use(parserMiddleware);
 
+app.use(authRouter);
 app.use(imageRouter);
 const logging = () => console.log('Starting up on port ', port);
 
